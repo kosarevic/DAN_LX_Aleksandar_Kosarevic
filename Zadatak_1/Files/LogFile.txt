@@ -1,0 +1,3 @@
+[03.09.2020 18:40] Employee: Name 1 Surname 1, has been deleted
+[03.09.2020 18:40] Employee: Name 3 Surname 3, has been deleted
+[03.09.2020 18:40] Employee: Name 4 Surname 4, has been deleted
