@@ -56,6 +56,5 @@ insert into tblEmployee (FirstName, LastName, JMBG, DateOfBirth, Gender, Registr
 insert into tblEmployee (FirstName, LastName, JMBG, DateOfBirth, Gender, RegistrationNumber, PhoneNumber ,LocationID, SectorID, ManagerID) values ('Name 5','Surname 5', '0111990111115', '1-11-1990', 'F', 111111115, '064/2222222', 2, 2, 0);
 insert into tblEmployee (FirstName, LastName, JMBG, DateOfBirth, Gender, RegistrationNumber, PhoneNumber ,LocationID, SectorID, ManagerID) values ('Name 6','Surname 6', '1101990111116', '11-1-1990', 'X', 111111116, '064/3333333', 3, 3, 4);
 
-select * from tblEmployee e
-join tblLocation l on e.LocationID = l.LocationID
-join tblSector s on e.SectorID = s.SectorID
+select * from tblSector;
+select * from tblEmployee

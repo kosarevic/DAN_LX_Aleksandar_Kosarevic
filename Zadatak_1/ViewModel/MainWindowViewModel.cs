@@ -73,7 +73,7 @@ namespace Zadatak_1.ViewModel
                             LastName = row[2].ToString(),
                             JMBG = row[3].ToString(),
                             DateOfBirth = DateTime.Parse(row[4].ToString()),
-                            Gender = char.Parse(row[5].ToString()),
+                            Gender = row[5].ToString(),
                             RegistrationNumber = row[6].ToString(),
                             PhoneNumber = row[7].ToString(),
                             Manager = new Employee()
@@ -117,29 +117,35 @@ namespace Zadatak_1.ViewModel
         /// <param name="e"></param>
         public void DeleteRow(object sender, DoWorkEventArgs e)
         {
-            Thread.Sleep(2000);
-            if (row == null) { return; }
-            foreach (var m in MainWindowViewModels)
+            try
             {
-                if (m.Employee.Manager.Id == row.Employee.Id)
+                Thread.Sleep(2000);
+                if (row == null) { return; }
+                foreach (var m in MainWindowViewModels)
                 {
-                    m.Employee.Manager = null;
+                    if (m.Employee.Manager.Id == row.Employee.Id)
+                    {
+                        m.Employee.Manager = null;
+                    }
                 }
+                var con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ToString());
+                con.Open();
+                var cmd = new SqlCommand("delete from tblEmployee where EmployeeID = @EmployeeID;", con);
+                cmd.Parameters.AddWithValue("@EmployeeID", row.Employee.Id);
+                cmd.ExecuteNonQuery();
+                LogActions.LogDeleteEmployee(row.Employee);
+                //Object is removed from ongoing list.
+                App.Current.Dispatcher.Invoke((Action)delegate
+                {
+                    MainWindowViewModels.Remove(row);
+                });
+                con.Close();
+                con.Dispose();
+                var messageBoxResult = System.Windows.MessageBox.Show("Delete Successfull", "Notification");
             }
-            var con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ToString());
-            con.Open();
-            var cmd = new SqlCommand("delete from tblEmployee where EmployeeID = @EmployeeID;", con);
-            cmd.Parameters.AddWithValue("@EmployeeID", row.Employee.Id);
-            cmd.ExecuteNonQuery();
-            LogActions.LogDeleteEmployee(row.Employee);
-            //Object is removed from ongoing list.
-            App.Current.Dispatcher.Invoke((Action)delegate
+            catch (Exception)
             {
-                MainWindowViewModels.Remove(row);
-            });
-            con.Close();
-            con.Dispose();
-            var messageBoxResult = System.Windows.MessageBox.Show("Delete Successfull", "Notification");
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

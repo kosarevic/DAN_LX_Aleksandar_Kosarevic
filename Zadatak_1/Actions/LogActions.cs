@@ -16,12 +16,12 @@ namespace Zadatak_1.LogFile
         //method logs deletation of the Employee.
         public static void LogDeleteEmployee(Employee e)
         {
-            File.AppendAllText(@"..\\..\Files\LogFile.txt", "[" + DateTime.Now.ToString("dd.MM.yyyy HH:mm") + "]" + " Employee: " + e.FirstName + " " + e.LastName + ", has been deleted" + Environment.NewLine);
+            File.AppendAllText(@"..\\..\Files\Log.txt", "[" + DateTime.Now.ToString("dd.MM.yyyy HH:mm") + "]" + " Employee: " + e.FirstName + " " + e.LastName + ", has been deleted" + Environment.NewLine);
         }
         //method logs creation of the Employee.
         public static void LogAddEmployee(Employee e)
         {
-            File.AppendAllText(@"..\\..\Files\LogFile.txt", "[" + DateTime.Now.ToString("dd.MM.yyyy HH:mm") + "]" + " Employee: " + e.FirstName + " " + e.LastName + ", has been created" + Environment.NewLine);
+            File.AppendAllText(@"..\\..\Files\Log.txt", "[" + DateTime.Now.ToString("dd.MM.yyyy HH:mm") + "]" + " Employee: " + e.FirstName + " " + e.LastName + ", has been created" + Environment.NewLine);
         }
     }
 }

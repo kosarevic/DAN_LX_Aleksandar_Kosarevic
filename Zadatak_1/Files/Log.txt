@@ -1,1 +1,21 @@
-﻿
+﻿[03.09.2020 22:41] Employee: aca saca, has been created
+[03.09.2020 22:50] Employee: aca saca, has been deleted
+[03.09.2020 22:57] Employee: aca saca, has been created
+[03.09.2020 23:15] Employee: aca saca, has been created
+[03.09.2020 23:16] Employee: acaa sacaaa, has been created
+[04.09.2020 08:30] Employee: aca saca, has been deleted
+[04.09.2020 08:30] Employee: acaa sacaaa, has been deleted
+[04.09.2020 08:31] Employee: aca saca, has been created
+[04.09.2020 08:35] Employee: aca saca, has been created
+[04.09.2020 08:39] Employee: aca saca, has been created
+[04.09.2020 08:43] Employee: aca saca, has been deleted
+[04.09.2020 09:00] Employee: aca saca, has been created
+[04.09.2020 09:00] Employee: aca saca, has been deleted
+[04.09.2020 09:20] Employee: aca saca, has been created
+[04.09.2020 09:21] Employee: aca saca, has been deleted
+[04.09.2020 09:21] Employee: aca saca, has been created
+[04.09.2020 09:22] Employee: aca saca, has been deleted
+[04.09.2020 09:22] Employee: aca saca, has been created
+[04.09.2020 09:53] Employee: aca saca, has been deleted
+[04.09.2020 09:54] Employee: aca saca, has been created
+[04.09.2020 09:54] Employee: aca saca, has been deleted
