@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Zadatak_1.Model
 {
-    class MainWindowModel
+    public class MainWindowModel
     {
 
         public Employee Employee { get; set; }

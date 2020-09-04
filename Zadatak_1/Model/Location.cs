@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Zadatak_1.Model
 {
-    class Location
+    public class Location
     {
         public int Id { get; set; }
         public string Adress { get; set; }

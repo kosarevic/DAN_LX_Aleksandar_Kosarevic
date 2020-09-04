@@ -15,42 +15,55 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Zadatak_1.Model;
 using Zadatak_1.Validation;
-using Zadatak_1.View;
 using Zadatak_1.ViewModel;
 
-namespace Zadatak_1
+namespace Zadatak_1.View
 {
     /// <summary>
-    /// Interaction logic for AddEmployeeWindow.xaml
+    /// Interaction logic for EditEmployeeWindow.xaml
     /// </summary>
-    public partial class AddEmployeeWindow : Window
+    public partial class EditEmployeeWindow : Window
     {
-        AddEmployeeViewModel evm = new AddEmployeeViewModel();
+        EditEmployeeViewModel evm = new EditEmployeeViewModel();
+        public static bool JMBGchanged = false;
+        public static bool RegNumChanged = false;
+        public string InitialJMBG;
+        public string InitialRegNum;
 
-        public AddEmployeeWindow()
+        public EditEmployeeWindow(Employee e)
         {
-            EditEmployeeWindow.JMBGchanged = true;
-            EditEmployeeWindow.RegNumChanged = true;
+            JMBGchanged = false;
+            RegNumChanged = false;
             InitializeComponent();
+            evm.Employee = e;
             DataContext = evm;
-            evm.Employee.FirstName = "";
-            evm.Employee.LastName = "";
-            evm.Employee.JMBG = "";
-            evm.Employee.Gender = "";
-            evm.Employee.RegistrationNumber = "";
-            evm.Employee.PhoneNumber = "";
-            evm.Employee.Location = new Location();
-            evm.Employee.Sector = new Sector();
+            evm.Employee.FirstName = evm.Employee.FirstName;
+            evm.Employee.LastName = evm.Employee.LastName;
+            evm.Employee.JMBG = evm.Employee.JMBG;
+            InitialJMBG = evm.Employee.JMBG;
+            evm.Employee.Gender = evm.Employee.Gender;
+            evm.Employee.RegistrationNumber = evm.Employee.RegistrationNumber;
+            InitialRegNum = evm.Employee.RegistrationNumber;
+            evm.Employee.PhoneNumber = evm.Employee.PhoneNumber;
+            evm.Employee.Location = e.Location;
+            evm.Employee.Sector = e.Sector;
+            evm.Sector = e.Sector.Title;
         }
 
         private void Btn_Ok(object sender, RoutedEventArgs e)
         {
             evm.Employee.Sector.Title = evm.Sector;
+
+            if (JMBG.Text != InitialJMBG)
+                JMBGchanged = true;
+            if (RegNum.Text != InitialRegNum)
+                RegNumChanged = true;
+
             if (EmployeValidation.Validate(evm.Employee))
             {
                 BackgroundWorker worker = new BackgroundWorker();
                 worker.WorkerReportsProgress = true;
-                worker.DoWork += evm.AddEmployee;
+                worker.DoWork += evm.EditEmpoye;
                 worker.RunWorkerAsync();
                 Thread.Sleep(2000);
                 MainWindow window = new MainWindow();

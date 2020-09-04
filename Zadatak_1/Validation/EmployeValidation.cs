@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Zadatak_1.Model;
+using Zadatak_1.View;
 
 namespace Zadatak_1.Validation
 {
@@ -68,23 +69,26 @@ namespace Zadatak_1.Validation
                     if (e.JMBG.Length == 13 && e.JMBG.All(Char.IsDigit) && e.JMBG != null && e.JMBG != "")
                     {
                         //Validation for checking duplicate JMBG in database.
-                        using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ToString()))
+                        if (EditEmployeeWindow.JMBGchanged)
                         {
-                            var cmd = new SqlCommand(@"select JMBG from tblEmployee where JMBG = @JMBG", conn);
-                            cmd.Parameters.AddWithValue("@JMBG", e.JMBG);
-                            conn.Open();
-                            SqlDataReader reader1 = cmd.ExecuteReader();
-                            while (reader1.Read())
+                            using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ToString()))
                             {
-                                if (reader1[0].ToString() == e.JMBG)
+                                var cmd = new SqlCommand(@"select JMBG from tblEmployee where JMBG = @JMBG", conn);
+                                cmd.Parameters.AddWithValue("@JMBG", e.JMBG);
+                                conn.Open();
+                                SqlDataReader reader1 = cmd.ExecuteReader();
+                                while (reader1.Read())
                                 {
-                                    MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("JMBG already exists in database, try again.", "Notification");
-                                    cancel = true;
-                                    break;
+                                    if (reader1[0].ToString() == e.JMBG)
+                                    {
+                                        MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("JMBG already exists in database, try again.", "Notification");
+                                        cancel = true;
+                                        break;
+                                    }
                                 }
-                            }
-                            reader1.Close();
-                            conn.Close();
+                                reader1.Close();
+                                conn.Close();
+                            } 
                         }
                         //if there is a duplicate, method stops further execution.
                         if (cancel) { break; }
@@ -156,7 +160,7 @@ namespace Zadatak_1.Validation
                     MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("incorrect registration number (9 digits required), try again.", "Notification");
                     return false;
                 }
-                else
+                else if(EditEmployeeWindow.RegNumChanged)
                 {
                     using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ToString()))
                     {

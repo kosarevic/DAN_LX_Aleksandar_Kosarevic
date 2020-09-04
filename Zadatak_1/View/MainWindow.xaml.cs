@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Zadatak_1.View;
 using Zadatak_1.ViewModel;
 
 namespace Zadatak_1
@@ -42,6 +43,14 @@ namespace Zadatak_1
                 worker.RunWorkerAsync();
             }
         }
+
+        private void HyperlinkButton_Edit(object sender, RoutedEventArgs e)
+        {
+            EditEmployeeWindow window = new EditEmployeeWindow(mwm.Row.Employee);
+            window.Show();
+            Close();
+        }
+
         /// <summary>
         /// Method responsible for canceling deletation of employee on cancel button click.
         /// </summary>

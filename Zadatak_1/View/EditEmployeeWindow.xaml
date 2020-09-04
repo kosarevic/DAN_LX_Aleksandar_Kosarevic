@@ -1,0 +1,34 @@
+﻿<Window x:Class="Zadatak_1.View.EditEmployeeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        WindowStartupLocation="CenterScreen"
+        xmlns:local="clr-namespace:Zadatak_1.View"
+        mc:Ignorable="d"
+        Title="EditEmployeeWindow" Height="450" Width="800">
+    <Grid>
+        <TextBlock Text="Edit Employee" TextAlignment="Center" Foreground="#282828" Margin="313,10,306,368" HorizontalAlignment="Center" FontSize="25" Width="173"/>
+        <TextBox Text="{Binding Employee.FirstName, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="116,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Text="{Binding Employee.LastName, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="117,187,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="JMBG" Text="{Binding Employee.JMBG, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="117,262,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Text="{Binding Employee.PhoneNumber, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="560,187,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="First Name" HorizontalAlignment="Left" Margin="143,75,0,0" VerticalAlignment="Top"/>
+        <Label Content="Last Name" HorizontalAlignment="Left" Margin="144,156,0,0" VerticalAlignment="Top"/>
+        <Label Content="JMBG" HorizontalAlignment="Left" Margin="158,231,0,0" VerticalAlignment="Top"/>
+        <Label Content="Phone number" HorizontalAlignment="Left" Margin="578,157,0,0" VerticalAlignment="Top"/>
+        <Label Content="Gender" HorizontalAlignment="Left" Margin="379,157,0,0" VerticalAlignment="Top"/>
+        <Label Content="Location" HorizontalAlignment="Left" Margin="379,231,0,0" VerticalAlignment="Top"/>
+        <Label Content="Sector" HorizontalAlignment="Left" Margin="600,76,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="345,80,0,0" TextWrapping="Wrap" Text="Registration number" VerticalAlignment="Top"/>
+        <TextBox x:Name="RegNum" HorizontalAlignment="Left" Height="23" Margin="345,107,0,0" TextWrapping="Wrap" Text="{Binding Employee.RegistrationNumber, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="CmbGender" IsEditable="True" IsReadOnly="True" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="345,188,0,0" ItemsSource="{Binding Genders}" SelectedItem="{Binding Employee.Gender, UpdateSourceTrigger=PropertyChanged}"/>
+        <ComboBox x:Name="CmbLocation" IsSynchronizedWithCurrentItem="True" IsEditable="True" IsReadOnly="True" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="345,263,0,0" ItemsSource="{Binding Locations}" DisplayMemberPath="Adress" SelectedItem="{Binding Employee.Location, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Text="{Binding Employee.Sector.Title, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="559,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="1.524,2.696"/>
+        <Button Content="Ok" HorizontalAlignment="Left" Margin="290,356,0,0" VerticalAlignment="Top" Width="75" Click="Btn_Ok"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="402,356,0,0" VerticalAlignment="Top" Width="75" Click="Btn_Cancel"/>
+        <Label Content="Manager (optional)" HorizontalAlignment="Left" Margin="567,231,0,0" VerticalAlignment="Top"/>
+        <ComboBox IsSynchronizedWithCurrentItem="True" IsEditable="True" IsReadOnly="True" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="559,263,0,0" ItemsSource="{Binding Employees}" DisplayMemberPath="FirstName" SelectedItem="{Binding Employee.Manager, UpdateSourceTrigger=PropertyChanged}"/>
+
+    </Grid>
+</Window>
