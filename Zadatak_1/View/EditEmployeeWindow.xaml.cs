@@ -37,6 +37,7 @@ namespace Zadatak_1.View
             InitializeComponent();
             evm.Employee = e;
             DataContext = evm;
+            evm.RemoveSelectedEmployee(e);
             evm.Employee.FirstName = evm.Employee.FirstName;
             evm.Employee.LastName = evm.Employee.LastName;
             evm.Employee.JMBG = evm.Employee.JMBG;

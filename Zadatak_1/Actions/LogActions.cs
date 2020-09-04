@@ -23,5 +23,10 @@ namespace Zadatak_1.LogFile
         {
             File.AppendAllText(@"..\\..\Files\Log.txt", "[" + DateTime.Now.ToString("dd.MM.yyyy HH:mm") + "]" + " Employee: " + e.FirstName + " " + e.LastName + ", has been created" + Environment.NewLine);
         }
+        //method logs edit of the Employee.
+        public static void LogEditEmployee(Employee e)
+        {
+            File.AppendAllText(@"..\\..\Files\Log.txt", "[" + DateTime.Now.ToString("dd.MM.yyyy HH:mm") + "]" + " Employee: " + e.FirstName + " " + e.LastName + ", has been edited" + Environment.NewLine);
+        }
     }
 }

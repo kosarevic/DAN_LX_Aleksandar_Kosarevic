@@ -49,12 +49,12 @@ insert into tblSector(Title) values ('Sector 1');
 insert into tblSector(Title) values ('Sector 2');
 insert into tblSector(Title) values ('Sector 3');
 
-insert into tblEmployee (FirstName, LastName, JMBG, DateOfBirth, Gender, RegistrationNumber, PhoneNumber ,LocationID, SectorID, ManagerID) values ('Name 1','Surname 1', '0101990111111', '1-1-1990', 'M', 111111111, '064/1111111', 1, 1, 3);
-insert into tblEmployee (FirstName, LastName, JMBG, DateOfBirth, Gender, RegistrationNumber, PhoneNumber ,LocationID, SectorID, ManagerID) values ('Name 2','Surname 2', '0111990111112', '1-11-1990', 'F', 111111112, '064/2222222', 2, 2, 0);
-insert into tblEmployee (FirstName, LastName, JMBG, DateOfBirth, Gender, RegistrationNumber, PhoneNumber ,LocationID, SectorID, ManagerID) values ('Name 3','Surname 3', '1101990111113', '11-1-1990', 'X', 111111113, '064/3333333', 3, 3, 0);
-insert into tblEmployee (FirstName, LastName, JMBG, DateOfBirth, Gender, RegistrationNumber, PhoneNumber ,LocationID, SectorID, ManagerID) values ('Name 4','Surname 4', '0101990111114', '1-1-1990', 'M', 111111114, '064/1111111', 1, 1, 2);
-insert into tblEmployee (FirstName, LastName, JMBG, DateOfBirth, Gender, RegistrationNumber, PhoneNumber ,LocationID, SectorID, ManagerID) values ('Name 5','Surname 5', '0111990111115', '1-11-1990', 'F', 111111115, '064/2222222', 2, 2, 0);
-insert into tblEmployee (FirstName, LastName, JMBG, DateOfBirth, Gender, RegistrationNumber, PhoneNumber ,LocationID, SectorID, ManagerID) values ('Name 6','Surname 6', '1101990111116', '11-1-1990', 'X', 111111116, '064/3333333', 3, 3, 4);
+insert into tblEmployee (FirstName, LastName, JMBG, DateOfBirth, Gender, RegistrationNumber, PhoneNumber ,LocationID, SectorID, ManagerID) values ('NameA','SurnameA', '0101990111111', '1-1-1990', 'M', 111111111, '0641111111', 1, 1, 3);
+insert into tblEmployee (FirstName, LastName, JMBG, DateOfBirth, Gender, RegistrationNumber, PhoneNumber ,LocationID, SectorID, ManagerID) values ('NameB','SurnameB', '0111990111112', '1-11-1990', 'F', 111111112, '0642222222', 2, 2, 0);
+insert into tblEmployee (FirstName, LastName, JMBG, DateOfBirth, Gender, RegistrationNumber, PhoneNumber ,LocationID, SectorID, ManagerID) values ('NameC','SurnameC', '1101990111113', '11-1-1990', 'X', 111111113, '0643333333', 3, 3, 0);
+insert into tblEmployee (FirstName, LastName, JMBG, DateOfBirth, Gender, RegistrationNumber, PhoneNumber ,LocationID, SectorID, ManagerID) values ('NameD','SurnameD', '0101990111114', '1-1-1990', 'M', 111111114, '0641111111', 1, 1, 2);
+insert into tblEmployee (FirstName, LastName, JMBG, DateOfBirth, Gender, RegistrationNumber, PhoneNumber ,LocationID, SectorID, ManagerID) values ('NameE','SurnameE', '0111990111115', '1-11-1990', 'F', 111111115, '0642222222', 2, 2, 0);
+insert into tblEmployee (FirstName, LastName, JMBG, DateOfBirth, Gender, RegistrationNumber, PhoneNumber ,LocationID, SectorID, ManagerID) values ('NameF','SurnameF', '1101990111116', '11-1-1990', 'X', 111111116, '0643333333', 3, 3, 4);
 
 select * from tblSector;
 select * from tblEmployee

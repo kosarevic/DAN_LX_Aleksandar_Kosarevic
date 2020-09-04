@@ -7,8 +7,10 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using Zadatak_1.LogFile;
 using Zadatak_1.Model;
 
 namespace Zadatak_1.ViewModel
@@ -21,8 +23,8 @@ namespace Zadatak_1.ViewModel
 
         public EditEmployeeViewModel()
         {
-            FillList();
             Employee = new Employee();
+            FillList();
         }
 
         private Employee employee;
@@ -138,31 +140,49 @@ namespace Zadatak_1.ViewModel
                     };
                     m.Employee.Location = m.Location;
                     m.Employee.Sector = m.Sector;
+
                     Employees.Add(m.Employee);
+
                 }
+            }
+        }
+
+        public void RemoveSelectedEmployee(Employee e)
+        {
+            for (int i = 0; i < Employees.Count; i++)
+            {
+                if (Employees[i].Id == e.Id)
+                    Employees.RemoveAt(i);
             }
         }
 
         public void EditEmpoye(object sender, DoWorkEventArgs e)
         {
-            using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ToString()))
+            try
             {
-                var cmd = new SqlCommand(@"update tblEmployee set FirstName=@FirstName, LastName=@LastName, JMBG=@JMBG, DateOfBirth=@DateOfBirth, Gender=@Gender, RegistrationNumber=@RegistrationNumber, PhoneNumber=@PhoneNumber, LocationID=@LocationID, SectorID=@SectorID, ManagerID=@ManagerID where EmployeeID=@EmployeID", conn);
-                cmd.Parameters.AddWithValue("@EmployeID", employee.Id);
-                cmd.Parameters.AddWithValue("@FirstName", employee.FirstName);
-                cmd.Parameters.AddWithValue("@LastName", employee.LastName);
-                cmd.Parameters.AddWithValue("@JMBG", employee.JMBG);
-                cmd.Parameters.AddWithValue("@DateOfBirth", employee.DateOfBirth);
-                cmd.Parameters.AddWithValue("@Gender", employee.Gender);
-                cmd.Parameters.AddWithValue("@RegistrationNumber", employee.RegistrationNumber);
-                cmd.Parameters.AddWithValue("@PhoneNumber", employee.PhoneNumber); 
-                cmd.Parameters.AddWithValue("@LocationID", employee.Location.Id);
-                cmd.Parameters.AddWithValue("@SectorID", employee.Sector.Id);
-                cmd.Parameters.AddWithValue("@ManagerID", employee.Manager.Id);
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
-                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Employe successfully updated.", "Notification");
+                using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ToString()))
+                {
+                    var cmd = new SqlCommand(@"update tblEmployee set FirstName=@FirstName, LastName=@LastName, JMBG=@JMBG, DateOfBirth=@DateOfBirth, Gender=@Gender, RegistrationNumber=@RegistrationNumber, PhoneNumber=@PhoneNumber, LocationID=@LocationID, SectorID=@SectorID, ManagerID=@ManagerID where EmployeeID=@EmployeID", conn);
+                    cmd.Parameters.AddWithValue("@EmployeID", employee.Id);
+                    cmd.Parameters.AddWithValue("@FirstName", employee.FirstName);
+                    cmd.Parameters.AddWithValue("@LastName", employee.LastName);
+                    cmd.Parameters.AddWithValue("@JMBG", employee.JMBG);
+                    cmd.Parameters.AddWithValue("@DateOfBirth", employee.DateOfBirth);
+                    cmd.Parameters.AddWithValue("@Gender", employee.Gender);
+                    cmd.Parameters.AddWithValue("@RegistrationNumber", employee.RegistrationNumber);
+                    cmd.Parameters.AddWithValue("@PhoneNumber", employee.PhoneNumber);
+                    cmd.Parameters.AddWithValue("@LocationID", employee.Location.Id);
+                    cmd.Parameters.AddWithValue("@SectorID", employee.Sector.Id);
+                    cmd.Parameters.AddWithValue("@ManagerID", employee.Manager.Id);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Employe successfully updated.", "Notification");
+                    LogActions.LogEditEmployee(employee);
+                }
+            }
+            catch (Exception)
+            {
             }
         }
 
